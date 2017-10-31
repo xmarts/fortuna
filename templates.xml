@@ -1,0 +1,63 @@
+<openerp>
+   
+      <data>
+          <record id="view_producttem_form_inherit" model="ir.ui.view">
+            <field name="name">view.producttem.form.add.text.field</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='property_stock_inventory']" position="after">
+                    <field name="fortuna_boxweight"/>
+                    <field name="fortuna_unit"/>
+                </xpath>
+                <xpath expr="//field[@name='default_code']" position="replace">
+                    <field name="default_code"/>
+                </xpath>
+               <xpath expr="//field[@name='barcode']" position="replace">
+                     <field name="barcode"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after" >
+                    <button name="generate_route" string="Generar Ruta" type="object" invisible="1"/>
+                </xpath>
+    
+            </field>
+        </record>
+
+          <record id="view_productpacktem_form_inherit" model="ir.ui.view">
+            <field name="name">view.productpacktem.form.add.text.field</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+         
+                  
+                <xpath expr="//field[@name='packaging_ids']" position="before" >
+                <field name="fortuna_boxweight" invisible="1"/>
+            </xpath>
+            </field>
+        </record>
+        <record id="view_fortunapartner_form_inherit" model="ir.ui.view">
+            <field name="name">view.fortunapartner.form.add.text.field</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//group/field[@name='supplier']" position="after">                    
+                    <field name="fortuna_boxweight"/>
+                    <field name="fortuna_unit"/>
+                </xpath>
+                 
+            </field>
+        </record>
+        <record id="view_fortustockpicking_form_inherit" model="ir.ui.view">
+            <field name="name">view.fortustockpicking.form.add.text.field</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+         
+                <field name="qty_done" invisible="1"/>
+               
+         
+
+            </field>
+        </record>
+    </data>
+</openerp>

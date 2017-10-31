@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_inventoryqty">
+                <t t-foreach="docs" t-as="o">
+                   
+                        <div class="page">
+                            <t t-call="fortuna.extend_layout_p">
+                            <style type="text/css">
+                                 .boxH
+                                    {
+                                    float: right;
+                                    margin-left:100px;
+                                    border-radius: 10px; 
+                                    width:15%;
+                                    }
+                                    thead {color:white;background:#847a8b}
+                                    tbody {color:black}
+                                    tfoot {color:black}
+                            </style>
+                           
+                            <div class="boxH">
+                                <span t-field="o.date" style="font-family: calibri; font-size:11pt; font-style:bold;"/>
+                             </div><br /><br />
+                            <span t-field="o.name" style="font-family: calibri; font-size:24pt; font-style:bold; font-weight: 900;"/><br /><br /><br />
+                            <br /><br /><br />
+                            <table class="table" align="left" style="width:100%" border="1px solid #000000;" cellpadding="0" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th><strong>Ubicación</strong></th>
+                                        <th><strong>Producto</strong></th>
+                                        <th><strong>Lote de producción</strong></th>
+                                        <th><strong>Paquete</strong></th>
+                                    </tr>
+                                </thead>
+                                <tr t-foreach="o.line_ids" t-as="line">
+                                    <td><span t-field="line.location_id"/></td>
+                                    <td><span t-field="line.product_id"/></td>
+                                    <td><span t-field="line.prod_lot_id"/></td>
+                                    <td><span t-field="line.package_id"/></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </table>
+                           </t>  
+                        </div>
+                   
+               }
+             </t>
+        </template>
+
+
+         <template id="fortuna.extend_layout_p">
+           
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <div class="header">
+                <div class="row" style="font-size: 8px;">
+                    <div class="col-xs-3">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 90px;"/>
+                    </div>
+                    
+                    <table style="width: 100%">
+                        <tr style="text-align: center;border-bottom:1px dotted #AAAAAA;">
+                            <td style="width: 15%">
+                                <t t-usertime="%Y-%m-%d %H:%M:%S" />
+                            </td>
+                            <td style="width: 70%">
+                                <span t-esc="company.name"/>
+                            </td>
+                            <td style="width: 15%">
+                                <ul class="list-inline">
+                                    <li><span class="page"/></li>
+                                    <li>/</li>
+                                    <li><span class="topage"/></li>
+                                </ul>                            
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <t t-raw="0" />
+        </template>
+        
+    </data>
+</openerp>

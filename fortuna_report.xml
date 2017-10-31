@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+      <!--   <report 
+          
+            id="custom_report_fortuna_sale"
+            string="Pedido de venta La Fortuna"
+            model="sale.order"
+            report_type="qweb-pdf"
+            file="fortuna.report_fortuna_sale"
+            name="fortuna.report_fortuna_sale"
+        
+        /> -->
+         <report 
+          
+            id="custom_report_reordenamiento"
+            string="Reporte de reordenamiento"
+            model="stock.location"
+            report_type="qweb-pdf"
+            file="fortuna.report_reordenamiento"
+            name="fortuna.report_reordenamiento"
+        
+        />
+        <report 
+          
+            id="custom_report_purchaseorderfortuna"
+            string="Pedido de Compra Fortuna"
+            model="purchase.order"
+            report_type="qweb-html"
+            file="fortuna.report_purchaseorderfortuna"
+            name="fortuna.report_purchaseorderfortuna"
+        
+        />
+         <report
+            string="Inv. sin cantidad" 
+            id="action_report_inventory" 
+            model="stock.inventory" 
+            report_type="qweb-pdf"
+            name="fortuna.report_inventoryqty" 
+            file="fortuna.report_inventoryqty" 
+        />
+    </data>
+</openerp>

@@ -1,0 +1,29 @@
+<openerp>
+      <data>
+
+         <record id="view_posorder_form_inherit" model="ir.ui.view">
+            <field name="name">view.posorder.form.add.text.field</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/field[@name='name']" position="after">
+                    <field name="pay_method"/>
+
+            </xpath>
+
+            </field>
+        </record>
+         <record id="view_posordertree_form_inherit" model="ir.ui.view">
+            <field name="name">view.posordertee.form.add.text.field</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="pay_method"/>
+
+            </xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_reordenamiento">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                             
+                            <h2> <span t-field="o.name"/></h2>
+                            <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th><strong>Pasillo(x)</strong></th>
+                                    <th><strong>Estantería (Y)</strong></th>
+                                    <th><strong>Altura (Z)</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span t-field="o.posx"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.posy"/>
+                                    </td>
+                                     <td>
+                                        <span t-field="o.posz"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                          
+                               
+                        </div>
+                    </t>
+                 </t>
+             </t>
+        </template>
+    </data>
+</openerp>
